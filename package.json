@@ -1,7 +1,7 @@
 {
   "name": "homework9-node",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Description This application was created to generate a high-quality, professional README depending on a series of questions the user answers in their command line using Node.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

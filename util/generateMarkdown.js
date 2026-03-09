@@ -1,4 +1,3 @@
-// Function to return the license badge based on the license selection
 function renderLicenseBadge(license) {
   if (license === 'MIT') {
     return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
@@ -13,7 +12,6 @@ function renderLicenseBadge(license) {
   }
 }
 
-// Function to return the license link based on the license selection
 function renderLicenseLink(license) {
   if (license === 'MIT') {
     return '[MIT](https://opensource.org/licenses/MIT)';
@@ -28,61 +26,64 @@ function renderLicenseLink(license) {
   }
 }
 
-// Function to return the license section of the README
 function renderLicenseSection(license) {
   if (license === 'None') {
-    return '';
+    return `## License
+This project does not have a license.`;
   } else {
     return `## License
-This application is covered under the ${renderLicenseLink(license)} license. Click the badge above to learn more about the license.`;
+This application is covered under the ${renderLicenseLink(license)} license.`;
   }
 }
 
-
-// Function to generate markdown for README
 function generateMarkdown(data) {
-  const {title , description, installation, usage, contributing,tests, license, github, email} = data;
-  
+  const {
+    title,
+    description,
+    installation,
+    usage,
+    contributing,
+    tests,
+    license,
+    github,
+    email
+  } = data;
 
-  // Generate the content for the README file using the user's answers
-  
-const licenseSection = renderLicenseSection(license);
+  return `# ${title}
 
-  
-  return ` # ${title}
 ${renderLicenseBadge(license)}
 
-  ## Description
-  ${description}
-  
-  ## Table of Contents
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
-  - [Contributing](#contributing)
-  - [Tests](#tests)
-  - [Questions](#questions)
-  
-  ## Installation
-  ${installation}
-  
-  ## Usage
-  ${usage}
-  
-  ## ${renderLicenseSection(license)}
-  This application is covered under the ${license} license.
-  
-  ## Contributing
-  ${contributing}
-  
-  ## Tests
-  ${tests}
-  
-  ## Questions
-  For any questions or concerns, please reach out to me via [GitHub](https://github.com/${github}) or email me at ${email}.
-  `;
-  }
+## Description
+${description}
 
+## Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
 
+## Installation
+${installation}
+
+## Usage
+${usage}
+
+${renderLicenseSection(license)}
+
+## Contributing
+${contributing}
+
+## Tests
+${tests}
+
+## Questions
+GitHub: [${github}](https://github.com/${github})
+
+Email: ${email}
+`;
+}
 
 module.exports = generateMarkdown;
